@@ -1,40 +1,53 @@
 # Medical KG Evidence Guardrails
 
-Reproducibility materials for **risk-aware, evidence-conditioned biomedical claim verification with local medical knowledge graphs**.
+Core experimental code for **risk-aware, evidence-conditioned biomedical claim verification with local medical knowledge graphs**.
 
-The study evaluates a practical expert-system architecture in which provided textual evidence and local KG evidence are processed in parallel. KG connectivity is treated as a candidate audit signal rather than automatic claim-level support. A fixed-budget routing layer can send high-risk SUPPORT candidates for expert review while preserving the candidate label as unresolved.
+This repository contains the executable research pipeline only. Manuscripts, DOCX files, figures, generated tables, raw model predictions, and completed annotation forms are intentionally excluded.
 
-## Repository contents
+## What is included
 
-- `scripts/`: grouping, evaluation, Evidence Scorer, risk-routing, audit, figure, and manuscript-generation code;
-- `data/processed/`: frozen predictions, connected-component IDs, annotations, adjudication records, grouped-bootstrap results, Stage 10 cost analysis, and runtime benchmarks;
-- `outputs/figures_major_revision/`: publication figures in PNG, SVG, and PDF;
-- `outputs/manuscript/`: near-submission manuscript source, DOCX, structural audit, and visual-QA record;
-- `REPRODUCIBILITY.md`: recommended reconstruction and verification order;
-- `DATA_AVAILABILITY.md`: redistribution and licensing boundaries;
-- `release_manifest.json`: SHA-256 hashes for every tracked release file except the manifest itself.
+- biomedical claim normalization and PubMedQA-to-claim construction;
+- Hetionet/PrimeKG graph building and semantic cleaning;
+- Mondo, HGNC, and licensed UMLS terminology integration;
+- rule-based entity linking and bounded 1/2-hop local-subgraph retrieval;
+- predicate, direction, endpoint, and qualifier compatibility checks;
+- path-level Evidence Scorer training and evaluation;
+- provided-text and text/KG evidence-conditioned LLM baselines;
+- grouped cross-fitting, risk ablations, matched-budget review routing, bootstrap evaluation, and transfer diagnostics;
+- annotation reliability, path-artifact, and entity-linking audit analysis.
 
-## Key evaluation constraints
+## Repository layout
 
-- Formal600 uses claim/source connected-component grouped cross-fitting.
-- Risk routing uses out-of-fold predictions and fold-level matched review budgets.
-- PubMedQA-Claim-300 is reported as a QA-derived label-noise stress test, not clinical validation.
-- Stage 10 uses frozen predictions and seed `20260618`; it makes no new LLM calls and performs no risk-model retraining.
-- UMLS 2026AA content is not redistributed.
-
-## Quick verification
-
-```bash
-python scripts/verify_release_manifest.py
-python -m compileall -q scripts
+```text
+scripts/               Core experiment and analysis programs
+config/kg_resources.json  Frozen resource/version metadata
+docs/PIPELINE.md       Execution order and stage descriptions
+docs/DATA_REQUIREMENTS.md  Expected local inputs and licensing notes
+requirements.txt       Minimal Python dependencies
+.env.example           API configuration template without credentials
 ```
 
-The complete experimental environment depends on licensed terminology resources and the original public datasets. See `REPRODUCIBILITY.md` and `DATA_AVAILABILITY.md` before attempting a full reconstruction.
+## Installation
 
-## Manuscript status
+Python 3.11 was used for the reported experiments.
 
-The included manuscript is a near-submission version. Its scientific claims are intentionally conservative: the learned router does not reliably outperform self-reported confidence under leakage-controlled grouped evaluation, and frozen PubMedQA transfer cannot separate domain shift from reference-label mismatch.
+```bash
+python -m venv .venv
+python -m pip install -r requirements.txt
+```
 
-## License
+Copy `.env.example` to your preferred local environment configuration and set credentials outside version control. The scripts use repository-relative paths and write generated artifacts under `data/processed/` or `outputs/`; these paths are ignored by Git.
 
-No software or data license has yet been assigned to this repository. Third-party datasets and graph resources remain governed by their original licenses.
+## Reproduction scope
+
+The full sequence is documented in [docs/PIPELINE.md](docs/PIPELINE.md). Expensive LLM calls support dry-run/resume behavior where applicable. The final analyses use seed `20260618`; grouped bootstrap evaluation uses 5,000 resamples in the major-revision analyses.
+
+The code does not redistribute UMLS content. Reconstructing UMLS-derived aliases requires a valid UMLS license and a local `UMLS_API_KEY`. Public datasets and knowledge resources remain subject to their original terms.
+
+## Important interpretation
+
+Local KG connectivity is treated as a candidate evidence signal, not automatically as claim-level support. The system separates text-conditioned verification, KG evidence-state assessment, risk ranking, and a fixed-budget human-review action.
+
+## Citation and license
+
+Citation metadata will be added after publication. No software license is granted unless a `LICENSE` file is added explicitly.

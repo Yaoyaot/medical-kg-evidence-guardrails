@@ -1,0 +1,32 @@
+{
+  "hetionet": {
+    "version": "v1.0"
+  },
+  "primekg": {
+    "dataverse_datafile_id": 6180620,
+    "download_date": "2026-05-30",
+    "filtered_edges": 821912,
+    "semantically_cleaned_edges": 757128
+  },
+  "mondo": {
+    "version": "2026-05-05"
+  },
+  "hgnc": {
+    "download_date": "2026-05-30"
+  },
+  "umls": {
+    "release": "2026AA",
+    "redistribution": "not included; license required"
+  },
+  "merged_clean_graph": {
+    "nodes": 71410,
+    "edges": 2941128,
+    "aliases": 162143
+  },
+  "retrieval_defaults": {
+    "maximum_retained_paths": 50,
+    "maximum_prompt_paths": 10,
+    "maximum_neighbors_per_entity": 50,
+    "maximum_common_neighbors": 20
+  }
+}

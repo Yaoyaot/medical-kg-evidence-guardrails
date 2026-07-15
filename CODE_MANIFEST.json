@@ -1,0 +1,216 @@
+{
+  "scope": "core experimental code only",
+  "excluded": [
+    "manuscripts and document builders",
+    "figures and figure builders",
+    "generated data, predictions, and result tables",
+    "completed annotation or arbitration forms"
+  ],
+  "files": [
+    {
+      "path": ".env.example",
+      "sha256": "dafcc7a21234227825722e7277006fc0c5afd6833667e8e520c1f6beac883b10",
+      "bytes": 237
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "6359d8a4557c3106ffb199e7b491eb47d906ec397d3a920c10893806b8d39360",
+      "bytes": 200
+    },
+    {
+      "path": "config/kg_resources.json",
+      "sha256": "3eb94483d85cbcf25ec5c31a74c84bef5b4f357dff4fae9590e8cbfe5bb1fe1e",
+      "bytes": 671
+    },
+    {
+      "path": "docs/DATA_REQUIREMENTS.md",
+      "sha256": "8ffc0063489403169130165d267728fd94d4c953e2411e1c1a6c569409d3751f",
+      "bytes": 1308
+    },
+    {
+      "path": "docs/PIPELINE.md",
+      "sha256": "dc6764bc38a3a8b1f2ed26443755121ca1df420dc4c1af72fbc4cb1ce2bed37a",
+      "bytes": 2712
+    },
+    {
+      "path": "README.md",
+      "sha256": "9ccf6e94c564f3f7c5ace7660ac25f6c98c0f2c826d068dea866ce7618f0c652",
+      "bytes": 2774
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "8494296bb5674fdfab64cdac2423d807e50b63ed5d44974d268fa134f3200b20",
+      "bytes": 81
+    },
+    {
+      "path": "scripts/analyze_eswa_annotation_reliability.py",
+      "sha256": "a15654a319e0f99562f861ffef4fdef1474dbb98565db918c636849ff188bc51",
+      "bytes": 4885
+    },
+    {
+      "path": "scripts/analyze_eswa_evidence_scorer_detail.py",
+      "sha256": "dda7fbc0af1ab7d015440065658886d406c25cf35811504665d989c8359d21ba",
+      "bytes": 3043
+    },
+    {
+      "path": "scripts/analyze_eswa_path_artifacts.py",
+      "sha256": "574dc00d1099c5841f6204dbcb2d0f8868888be7a8931ffda8e480a22ff31e9d",
+      "bytes": 5373
+    },
+    {
+      "path": "scripts/analyze_eswa_risk_stability.py",
+      "sha256": "209982cef59fefde390f164307d865cceed22f348f08a3757533b0d9668c04c4",
+      "bytes": 10218
+    },
+    {
+      "path": "scripts/analyze_eswa_submission_closure.py",
+      "sha256": "45d31fc1f61ac2089a77fc746f6d651c68b5182b90ef5df0cc8eff0d65141b7d",
+      "bytes": 23480
+    },
+    {
+      "path": "scripts/analyze_stage9_human_audits.py",
+      "sha256": "492cbd636cba36c0e5cacf088fad4c1c5828814e9799a11f87ce0a46f66a1a08",
+      "bytes": 39642
+    },
+    {
+      "path": "scripts/build_eswa_major_revision_groups.py",
+      "sha256": "7435e5db801d807f5febd087294aacef1cf1745216bddf36f93a52b6f716280f",
+      "bytes": 11274
+    },
+    {
+      "path": "scripts/build_hetionet_graph.py",
+      "sha256": "df49b70e98f51067919cbff83e2ae1f226168db2c88a8fce01eb62b87e47fab5",
+      "bytes": 12898
+    },
+    {
+      "path": "scripts/build_open_terminology_aliases.py",
+      "sha256": "f2dba4937c2a40ed00a4ad33c1e69e7d815dfea3e6180a57a8ef97926bed2419",
+      "bytes": 5577
+    },
+    {
+      "path": "scripts/build_primekg_graph.py",
+      "sha256": "b9ba8ffff0e3db1d28a0706a2b63b4cd01532d63da54747d0fe9c99f0ce512bc",
+      "bytes": 8326
+    },
+    {
+      "path": "scripts/build_primekg_semantic_clean_graph.py",
+      "sha256": "f12bf27a6cdcddb626c4d43f7bfe5c84dc45acf622b24bef60be322681e34fcb",
+      "bytes": 5352
+    },
+    {
+      "path": "scripts/build_pubmedqa_claim300.py",
+      "sha256": "219e65662080b2488a73d9329c6b7790bd9bbc64ead5dffd340d179105403d43",
+      "bytes": 24478
+    },
+    {
+      "path": "scripts/build_strict_kg_evidence.py",
+      "sha256": "0ead2ff4e75d105c05980d6eddcbe702220679f1810f4edef4cbd765d6c4fac3",
+      "bytes": 9586
+    },
+    {
+      "path": "scripts/build_text_rag_kg_guardrail.py",
+      "sha256": "beb403aa62848320667a5889fecba5104ecd6e7e96c647e0dfa7778593d8dd40",
+      "bytes": 6256
+    },
+    {
+      "path": "scripts/build_umls_aliases.py",
+      "sha256": "c53c2efcedbcbe6e4886d68efca8c6f0c30525c2ec9f8071026bf3b12eb280b1",
+      "bytes": 13883
+    },
+    {
+      "path": "scripts/detect_claim_qualifiers.py",
+      "sha256": "09fa6c8cbaab3f977ac6d6cf3e8115f2ac73ef3779fddc0bac6381c08c41cccf",
+      "bytes": 1714
+    },
+    {
+      "path": "scripts/evaluate_annotation_agreement.py",
+      "sha256": "a560cd978d1890b57018379a83f8db1592525167c589247071706c62c3ff19ae",
+      "bytes": 8613
+    },
+    {
+      "path": "scripts/evaluate_eswa_fair_input_baselines.py",
+      "sha256": "b87b8b0dcc762dc33d6a0ad19834b492bec1d439ae680e1ac6609c6c84367ec2",
+      "bytes": 10228
+    },
+    {
+      "path": "scripts/evaluate_eswa_major_revision.py",
+      "sha256": "527b2bbbeb0785c5722db715882ce1adaee21bbfe175c674a275711f3f473646",
+      "bytes": 29267
+    },
+    {
+      "path": "scripts/evaluate_eswa_major_revision_external.py",
+      "sha256": "df13f522f5dc5ed1993a0094b900de62560a008f1b19fddeeb509d4ff320c7f3",
+      "bytes": 9506
+    },
+    {
+      "path": "scripts/evaluate_matched_budget_guardrails.py",
+      "sha256": "52df421872877d8dccaeb06746cacad4913fca6dc40b3b24ac603f064ae8a05e",
+      "bytes": 17646
+    },
+    {
+      "path": "scripts/hierarchical_evidence_features.py",
+      "sha256": "d55bc0b33b9e578ce1c37e1c8b50e3c70cd5f704655e9588f55392743f69dca8",
+      "bytes": 5533
+    },
+    {
+      "path": "scripts/link_claim_entities.py",
+      "sha256": "d988849f3624d8fa4b34b67a0efb70fb8774348bdc62aa07ae41e76cd8bb99c6",
+      "bytes": 10753
+    },
+    {
+      "path": "scripts/merge_local_medical_graphs.py",
+      "sha256": "d9001ea87f18df4ca7fca6880809d5c6c815ce1fd245c4cdec3400369751af28",
+      "bytes": 3176
+    },
+    {
+      "path": "scripts/prepare_week1_datasets.py",
+      "sha256": "29799b6d69663688205a79829ba0165240a20079158724c3240ac1312a116a5d",
+      "bytes": 5500
+    },
+    {
+      "path": "scripts/retrieve_local_subgraphs.py",
+      "sha256": "e2429f72fd10dae640740aa5dccd68cfea7594904c291df72d3f2a19fff0fdd5",
+      "bytes": 19750
+    },
+    {
+      "path": "scripts/run_eswa_llm_baselines.py",
+      "sha256": "9d73fadf3f416849b9080461e3f029c994eafb77ae3720cd53595dcf0d17d744",
+      "bytes": 18306
+    },
+    {
+      "path": "scripts/run_llm_baselines.py",
+      "sha256": "993a6e9242cb73847fb19e31ec5da29834c2a4e98b42170edd4a75a1055a4154",
+      "bytes": 12162
+    },
+    {
+      "path": "scripts/run_pubmedqa_external.py",
+      "sha256": "6c23e019554e8210c12b41f8b02cd6a4c91ee9315d4caa57284e3d0cf22c6aae",
+      "bytes": 8661
+    },
+    {
+      "path": "scripts/stage3_path_reranker_utils.py",
+      "sha256": "276e26d6dfd84c3cd5684ba8c86423cac9328ab2898885edc7c1086af865ca51",
+      "bytes": 6055
+    },
+    {
+      "path": "scripts/strict_relation_alignment.py",
+      "sha256": "5a9a6bfa1f860da171389d78c2ee7bdbc59ad3430a80ff82b44530d5e0d92d9b",
+      "bytes": 2641
+    },
+    {
+      "path": "scripts/summarize_eswa_risk_ablations.py",
+      "sha256": "b26339e6215e755b2d7d148f8a941cbd7cd40f8f5777f928034b9bd7c6ebc979",
+      "bytes": 5185
+    },
+    {
+      "path": "scripts/train_hierarchical_evidence_scorer.py",
+      "sha256": "ff45a5cb8e3c67e3db96d82b85250923ba904390e1402eb55e05b0a04881c17b",
+      "bytes": 13449
+    },
+    {
+      "path": "scripts/validate_path_annotations.py",
+      "sha256": "c447dd889d4bebf9f85fbd35afda36f97e7597e5d2c403bad63057591d435950",
+      "bytes": 4119
+    }
+  ]
+}
