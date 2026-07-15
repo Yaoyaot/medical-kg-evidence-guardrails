@@ -39,8 +39,8 @@
     },
     {
       "path": "requirements.txt",
-      "sha256": "8494296bb5674fdfab64cdac2423d807e50b63ed5d44974d268fa134f3200b20",
-      "bytes": 81
+      "sha256": "c4a7e1b4abda48a0f523a753570652f8a8ffcfec2ce4ac34cb19125e9bcf24fe",
+      "bytes": 93
     },
     {
       "path": "scripts/analyze_eswa_annotation_reliability.py",
