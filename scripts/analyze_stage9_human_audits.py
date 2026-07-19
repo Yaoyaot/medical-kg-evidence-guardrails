@@ -10,10 +10,12 @@ import random
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
+
+from repo_paths import find_repo_root
 from typing import Any, Callable, Iterable
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = find_repo_root()
 AUDIT_DIR = ROOT / "data/processed/stage9_eswa_major_revision/human_audits"
 OUT_DIR = ROOT / "data/processed/stage9_eswa_major_revision/human_audit_results"
 STAGE8 = ROOT / "data/processed/stage8_pubmedqa_external"
@@ -573,7 +575,10 @@ def type_rows(claim_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return output
 
 
-def external_sensitivity(pubmed_final: list[dict[str, str]]) -> list[dict[str, Any]]:
+def external_sensitivity(
+    pubmed_final: list[dict[str, str]],
+    frozen_risk_path: Path | None = None,
+) -> list[dict[str, Any]]:
     compatible_ids = {row["id"] for row in pubmed_final if row["final_label_compatibility"].strip().upper() == "COMPATIBLE"}
     if len(compatible_ids) != 44:
         raise RuntimeError(f"Expected 44 compatible audit IDs, found {len(compatible_ids)}")
@@ -591,15 +596,25 @@ def external_sensitivity(pubmed_final: list[dict[str, str]]) -> list[dict[str, A
                 "id": row["id"], "gold_label": row["gold_label"], "pred_label": row["pred_label"], "reviewed": False,
             })
 
-    risk_rows = read_jsonl(STAGE8 / "external_guardrail_scores.jsonl")
+    risk_rows = read_jsonl(
+        frozen_risk_path
+        if frozen_risk_path is not None
+        else STAGE8 / "external_guardrail_scores.jsonl"
+    )
     eligible = [row for row in risk_rows if row["candidate_label"] == "SUPPORT"]
     budget = round(0.05 * len(risk_rows))
 
     def top_ids(field: str) -> set[str]:
         return {row["id"] for row in sorted(eligible, key=lambda item: (-float(item[field]), str(item["id"])))[:budget]}
 
-    confidence_ids = top_ids("risk_confidence_only")
-    learned_ids = top_ids("risk_hierarchical_learned")
+    confidence_ids = top_ids(
+        "risk_confidence" if frozen_risk_path is not None else "risk_confidence_only"
+    )
+    learned_ids = top_ids(
+        "risk_full_without_dataset_source"
+        if frozen_risk_path is not None
+        else "risk_hierarchical_learned"
+    )
     for row in risk_rows:
         if row["id"] not in compatible_ids:
             continue
@@ -710,6 +725,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Finalize Stage 9 PubMedQA and entity-linking human audits.")
     parser.add_argument("--audit-dir", type=Path, default=AUDIT_DIR)
     parser.add_argument("--output-dir", type=Path, default=OUT_DIR)
+    parser.add_argument("--frozen-risk-path", type=Path)
     args = parser.parse_args()
     audit_dir = args.audit_dir.resolve()
     output_dir = args.output_dir.resolve()
@@ -771,7 +787,10 @@ def main() -> None:
             judgments.append({"dataset": dataset, "judgment": value, "count": counts[value], "n": len(selected), "rate": counts[value] / len(selected), "ci_low": low, "ci_high": high})
     write_csv(output_dir / "entity_linking_judgment_distribution.csv", judgments)
 
-    sensitivity = external_sensitivity(pub_final)
+    sensitivity = external_sensitivity(
+        pub_final,
+        args.frozen_risk_path.resolve() if args.frozen_risk_path else None,
+    )
     write_csv(output_dir / "pubmedqa_audit60_compatible44_sensitivity.csv", sensitivity)
 
     stats = {

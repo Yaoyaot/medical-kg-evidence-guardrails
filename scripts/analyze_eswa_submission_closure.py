@@ -16,10 +16,12 @@ import time
 from collections import defaultdict
 from pathlib import Path
 
+from repo_paths import find_repo_root
+
 import numpy as np
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = find_repo_root()
 SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
@@ -449,6 +451,10 @@ def runtime_benchmark(output: Path, repeats: int) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate frozen Stage 10 ESWA submission-closure analyses.")
     parser.add_argument("--output-dir", default="data/processed/stage10_eswa_submission_closure")
+    parser.add_argument(
+        "--risk-scores-path",
+        default="data/processed/stage9_eswa_major_revision/formal600_crossfit/formal600_crossfit_risk_scores.jsonl",
+    )
     parser.add_argument("--bootstrap-iterations", type=int, default=5000)
     parser.add_argument("--runtime-repeats", type=int, default=3)
     parser.add_argument("--skip-runtime", action="store_true")
@@ -456,7 +462,8 @@ def main() -> None:
     output = (ROOT / args.output_dir).resolve()
     output.mkdir(parents=True, exist_ok=True)
 
-    risk_rows = list(read_jsonl(ROOT / "data/processed/stage9_eswa_major_revision/formal600_crossfit/formal600_crossfit_risk_scores.jsonl"))
+    risk_scores_path = (ROOT / args.risk_scores_path).resolve()
+    risk_rows = list(read_jsonl(risk_scores_path))
     if len(risk_rows) != 600:
         raise RuntimeError(f"Expected 600 frozen OOF rows, found {len(risk_rows)}")
     if any("pair_group_id" not in row or "outer_fold" not in row for row in risk_rows):
@@ -494,7 +501,7 @@ def main() -> None:
         "created_unix": time.time(),
         "elapsed_seconds": time.time() - started,
         "frozen_inputs": {
-            "risk_scores": "data/processed/stage9_eswa_major_revision/formal600_crossfit/formal600_crossfit_risk_scores.jsonl",
+            "risk_scores": str(risk_scores_path.relative_to(ROOT)).replace("\\", "/"),
             "formal600_rows": 600,
             "pubmedqa_used_for_risk_adjustment": False,
             "model_retraining": False,
