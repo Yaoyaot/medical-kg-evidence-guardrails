@@ -2,7 +2,7 @@
 
 Core experimental code for **risk-aware, evidence-conditioned biomedical claim verification with local medical knowledge graphs**.
 
-This repository contains executable research code only. Manuscripts, figures, generated tables, raw or frozen model predictions, completed annotation forms are intentionally excluded.
+This repository contains executable research code only. Figures, generated tables, raw or frozen model predictions, completed annotation forms are intentionally excluded.
 
 ## Included pipeline
 
