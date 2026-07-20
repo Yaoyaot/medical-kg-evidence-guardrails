@@ -4,18 +4,34 @@
     "manuscripts and document builders",
     "figures and figure builders",
     "generated data, predictions, and result tables",
-    "completed annotation or arbitration forms"
+    "completed annotation or adjudication forms",
+    "caches, logs, and debugging artifacts"
   ],
   "files": [
     {
       "path": ".env.example",
-      "sha256": "dafcc7a21234227825722e7277006fc0c5afd6833667e8e520c1f6beac883b10",
-      "bytes": 237
+      "sha256": "dcbb4a549677956742d88a8af7aaeb5646381fe36b1d59c5496078d4cbc87812",
+      "bytes": 272
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "d27209f3a7a6c648379df11739a50f09aefd0345655c80183dab75abcfebd264",
+      "bytes": 158
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "3bedc627064f00bc032e2b4a67427877e4703d496a60b8c3db01e82a585aa851",
+      "bytes": 447
     },
     {
       "path": ".gitignore",
-      "sha256": "6359d8a4557c3106ffb199e7b491eb47d906ec397d3a920c10893806b8d39360",
-      "bytes": 200
+      "sha256": "f300abb8187b15246286359b02509ccbbd0fe95cee84435cbe64b596db6cff98",
+      "bytes": 283
+    },
+    {
+      "path": "README.md",
+      "sha256": "8f610cf05d6e4a986ae3cfecee892c7256f158741de2cef0726d2788ba599827",
+      "bytes": 4831
     },
     {
       "path": "config/kg_resources.json",
@@ -24,23 +40,23 @@
     },
     {
       "path": "docs/DATA_REQUIREMENTS.md",
-      "sha256": "8ffc0063489403169130165d267728fd94d4c953e2411e1c1a6c569409d3751f",
-      "bytes": 1308
+      "sha256": "1404421dc1ca1b748c35427c59298f0c9efaf1ef85c415d68c7112bf346f32a0",
+      "bytes": 2725
     },
     {
       "path": "docs/PIPELINE.md",
-      "sha256": "dc6764bc38a3a8b1f2ed26443755121ca1df420dc4c1af72fbc4cb1ce2bed37a",
-      "bytes": 2712
-    },
-    {
-      "path": "README.md",
-      "sha256": "9ccf6e94c564f3f7c5ace7660ac25f6c98c0f2c826d068dea866ce7618f0c652",
-      "bytes": 2774
+      "sha256": "e1ed140952a19557fd8915d7ae8890053b650c8b1d3eb33aa11516dcffc97b3b",
+      "bytes": 5067
     },
     {
       "path": "requirements.txt",
       "sha256": "c4a7e1b4abda48a0f523a753570652f8a8ffcfec2ce4ac34cb19125e9bcf24fe",
       "bytes": 93
+    },
+    {
+      "path": "scripts/analyze_alternative_balanced_samples.py",
+      "sha256": "3b19e14a32663089cda412fbd22a3dbe2f37e621672f2ca8a219111078c8e07c",
+      "bytes": 14071
     },
     {
       "path": "scripts/analyze_eswa_annotation_reliability.py",
@@ -53,9 +69,19 @@
       "bytes": 3043
     },
     {
+      "path": "scripts/analyze_eswa_fold_component_sensitivity.py",
+      "sha256": "6c885d8ae961d9c2ebbf5e8942bcca30cd48b0a727810788b959b53ac75ab9db",
+      "bytes": 7738
+    },
+    {
       "path": "scripts/analyze_eswa_path_artifacts.py",
       "sha256": "574dc00d1099c5841f6204dbcb2d0f8868888be7a8931ffda8e480a22ff31e9d",
       "bytes": 5373
+    },
+    {
+      "path": "scripts/analyze_eswa_review_revision.py",
+      "sha256": "30c858c0a2de1dfe59566c108daaccdfbae19dc8e926908618676553e90953eb",
+      "bytes": 19590
     },
     {
       "path": "scripts/analyze_eswa_risk_stability.py",
@@ -64,13 +90,18 @@
     },
     {
       "path": "scripts/analyze_eswa_submission_closure.py",
-      "sha256": "45d31fc1f61ac2089a77fc746f6d651c68b5182b90ef5df0cc8eff0d65141b7d",
-      "bytes": 23480
+      "sha256": "04ad79b6093fd2dc385ae7d354e016f8edb4040a81619dfd50766b144110729e",
+      "bytes": 23611
     },
     {
       "path": "scripts/analyze_stage9_human_audits.py",
-      "sha256": "492cbd636cba36c0e5cacf088fad4c1c5828814e9799a11f87ce0a46f66a1a08",
-      "bytes": 39642
+      "sha256": "bd428100435bd64ec4f5c69bd6ace95447c2d749fd9c48778e540e58f3e772b3",
+      "bytes": 40114
+    },
+    {
+      "path": "scripts/build_eswa_major_revision_audits.py",
+      "sha256": "e8be525711cb8ca715924ca09cc6d35b62ab952c55cff1c8ddfb3dee21c9f00a",
+      "bytes": 10588
     },
     {
       "path": "scripts/build_eswa_major_revision_groups.py",
@@ -143,6 +174,11 @@
       "bytes": 9506
     },
     {
+      "path": "scripts/evaluate_eswa_nested_path_crossfit.py",
+      "sha256": "b6feb9e1780585ec3eb375d1f8d968fd00abdb1e7ad6e9f934a11fdf65bb2b08",
+      "bytes": 26227
+    },
+    {
       "path": "scripts/evaluate_matched_budget_guardrails.py",
       "sha256": "52df421872877d8dccaeb06746cacad4913fca6dc40b3b24ac603f064ae8a05e",
       "bytes": 17646
@@ -163,9 +199,19 @@
       "bytes": 3176
     },
     {
+      "path": "scripts/prepare_stage9_audit_adjudication.py",
+      "sha256": "c5803350866e177a38298fcd5f89fc5cb713eb6fd417dc4b7d0b998a6448bcdd",
+      "bytes": 14214
+    },
+    {
       "path": "scripts/prepare_week1_datasets.py",
       "sha256": "29799b6d69663688205a79829ba0165240a20079158724c3240ac1312a116a5d",
       "bytes": 5500
+    },
+    {
+      "path": "scripts/repo_paths.py",
+      "sha256": "1ab35aa1444d5f0e6f95bafafdfaf721eb6960693f48f4ed8bdc3b9e2e760563",
+      "bytes": 806
     },
     {
       "path": "scripts/retrieve_local_subgraphs.py",
@@ -211,6 +257,11 @@
       "path": "scripts/validate_path_annotations.py",
       "sha256": "c447dd889d4bebf9f85fbd35afda36f97e7597e5d2c403bad63057591d435950",
       "bytes": 4119
+    },
+    {
+      "path": "scripts/validate_repository.py",
+      "sha256": "31f9762bd909e407e1cef749f3b762db1e6d75007c8fff6639b9442a25532c4e",
+      "bytes": 6646
     }
   ]
 }
