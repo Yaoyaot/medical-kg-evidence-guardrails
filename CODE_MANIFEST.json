@@ -178,7 +178,7 @@
     {
       "bytes": 1951,
       "path": "artifacts/predictions/prediction_manifest.json",
-      "sha256": "80677cd12fa586d352e5ff5fe6beb626090e5d4037f97080d8bd16cbbc68ba57"
+      "sha256": "8628d1426406610f98aeb15129381618d1405085afb874f6e7e067fe43f3d719"
     },
     {
       "bytes": 1116842,
@@ -186,9 +186,9 @@
       "sha256": "ad144aa65b5e2088fd7b88d52c1d8a1e580f71875ccc3afac74187725ca967aa"
     },
     {
-      "bytes": 43065,
+      "bytes": 42764,
       "path": "artifacts/predictions/pubmedqa_frozen_risk_scores.csv",
-      "sha256": "d92a3e43936e08e315587b42a3c6b7ffe3cf3b4932c896559ffe20455fa83958"
+      "sha256": "71d931d66fe1b9a2a0979795a18e3099abdf687bf76f6856caf379d0def4fd03"
     },
     {
       "bytes": 190455,
@@ -213,7 +213,7 @@
     {
       "bytes": 1140,
       "path": "artifacts/provenance/paper_artifact_release.json",
-      "sha256": "f0425b8bf3654ae6c47d06d3e322b9ed682ff81e301a083ba9bce4a12da7edc3"
+      "sha256": "7d83213b622dbc18502ff2acaf639daabe4835380f5660aa13e7bada24cfc576"
     },
     {
       "bytes": 6559,
@@ -281,14 +281,14 @@
       "sha256": "75205ff3015e0296b8c56d9c3477e51c66bf9bce059f801ae71a12ef627b5d30"
     },
     {
-      "bytes": 610,
+      "bytes": 606,
       "path": "artifacts/results/pubmedqa_frozen_risk_ranking.csv",
-      "sha256": "e6699a31ebf493163cb71042a806dd3f66256bf7991bdf68b2540f2e107bfe2e"
+      "sha256": "981197b3161f665dde2a77377dd271ccf64db0e367b65a78721f21467ba8f366"
     },
     {
-      "bytes": 951,
+      "bytes": 947,
       "path": "artifacts/results/pubmedqa_frozen_selective_metrics.csv",
-      "sha256": "897616c7d005043291a00cf11c967a22e0208b7cc16999ecb5dd2cd7a8a0e6ee"
+      "sha256": "441738fed0bcb8eba5911e463cbac8161c648f92628d20444368162c380db389"
     },
     {
       "bytes": 40614,
@@ -670,3 +670,4 @@
   "scope": "anonymous review code and curated reproducibility artifacts",
   "sha256sums_self_included": false
 }
+
