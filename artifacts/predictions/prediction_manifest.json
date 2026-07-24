@@ -21,9 +21,9 @@
       "sha256": "960371751052eeacee68dd0c991029b642e78912383c1b42f630fc7a9e855966"
     },
     {
-      "bytes": 43065,
+      "bytes": 42764,
       "path": "artifacts/predictions/pubmedqa_frozen_risk_scores.csv",
-      "sha256": "d92a3e43936e08e315587b42a3c6b7ffe3cf3b4932c896559ffe20455fa83958"
+      "sha256": "71d931d66fe1b9a2a0979795a18e3099abdf687bf76f6856caf379d0def4fd03"
     }
   ],
   "formal600_duplicate_method_record_pairs": 0,
@@ -53,3 +53,4 @@
   "external_gold_used_for_risk_scoring": false,
   "release_date": "2026-07-24"
 }
+
