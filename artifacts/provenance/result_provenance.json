@@ -1,0 +1,139 @@
+{
+  "absolute_source_paths_removed": true,
+  "bootstrap_iterations": 5000,
+  "configuration_sha256": "a7561a77c2d0867313f39e0e72da0e53eab94d346db5687f2fe152d12c25712b",
+  "dependency_lock_sha256": "d58f93f5e0abcf24622334fb0accb1aeb3ba3fc2378e3fac16619fa0cc0c5937",
+  "execution_status": "passed",
+  "export_code_sha256": "7c940218268cc1c3e40c1f2793d859b99c9da522b4329f481f37418f876d99ac",
+  "outputs": [
+    {
+      "input_sha256": "ac312eae09e5875f08949ac93ad047e577b3554e6a9114c853f80bed4a6b9ff9",
+      "logical_source": "logical:fair_input_main_results.csv",
+      "output": "artifacts/results/fair_input_metrics.csv",
+      "rows": 13,
+      "sha256": "d00625ecb1bd00504b44bebae5e0a28ce331533c59f13eb00bd807f021ff6d87"
+    },
+    {
+      "input_sha256": "f37b24dcb74593c0e2832304ccaff3fc9352a1ab87587ab0dc96765a35590fc9",
+      "logical_source": "logical:fair_input_all_pairwise_bootstrap.csv",
+      "output": "artifacts/results/fair_input_pairwise_bootstrap.csv",
+      "rows": 28,
+      "sha256": "c7cb47b3d83d1ecfd7da80bc09e8209f38183e1add4a03cf0ec015722a8ac5d6"
+    },
+    {
+      "input_sha256": "822b73bb9814cac7720d854f0d3d34610d0695e2c9525d7dff4b6f2f08dc5a96",
+      "logical_source": "logical:strict_evidence_conversion_funnel.csv",
+      "output": "artifacts/results/evidence_conversion_funnel.csv",
+      "rows": 4,
+      "sha256": "d61797b5479df077fb93483d369f5c18d307d66dbf45f37ce3704af9d440cdd4"
+    },
+    {
+      "input_sha256": "41b427569ae4e6565373915671e48743f15a6589d2427217c044b95951d4a1e0",
+      "logical_source": "logical:cv_summary.csv",
+      "output": "artifacts/results/evidence_scorer_cv_summary.csv",
+      "rows": 16,
+      "sha256": "4b468f92d5728126a4c7dca94bc48537d4fc1b08fc068d711e766e867e414f47"
+    },
+    {
+      "input_sha256": "11cd10d7a090ac571402297c06ff9423e7777ebd39dc7ee68fe04583c72fcb69",
+      "logical_source": "logical:cv_fold_metrics.csv",
+      "output": "artifacts/results/evidence_scorer_fold_metrics.csv",
+      "rows": 200,
+      "sha256": "13f6c8f40cefc911717518cf15ea4d8207d0875501a3d3ba59ada126e489fa17"
+    },
+    {
+      "input_sha256": "f1f1dd55b599706eb3d2ee7e590c0688bcf9fc2420a4947db2af17c098cc104f",
+      "logical_source": "logical:formal600_selective_metrics.csv",
+      "output": "artifacts/results/risk_routing_metrics.csv",
+      "rows": 70,
+      "sha256": "c17816da1122850c2510c694fbded62e90391f013b7c8cda5175fc6aac29e84c"
+    },
+    {
+      "input_sha256": "26fb491ccfc560cb1b95a4b6dffb237b3e81229f0e91a82604a3dd28b47324ee",
+      "logical_source": "logical:formal600_risk_ranking.csv",
+      "output": "artifacts/results/risk_ranking_metrics.csv",
+      "rows": 13,
+      "sha256": "c90d7f476c98b6a82c5bc2836a9bfb1d9566be963f566cde5d351013c1c211b7"
+    },
+    {
+      "input_sha256": "be99949af53a4a3f02c105eafb9a037aa68d5d6d143fd432f64d69f0539ceacd",
+      "logical_source": "logical:formal600_risk_coverage_curve.csv",
+      "output": "artifacts/results/risk_coverage_curve.csv",
+      "rows": 273,
+      "sha256": "5e29bbc767f429aacdfa4f86a88eb4fdab56c29b74d5e0d72b5ed9e0ce368ee1"
+    },
+    {
+      "input_sha256": "be64b77f0b919aa9f082ff112997f45ec50dd26ab57a2dabbd4583b49546cba5",
+      "logical_source": "logical:formal600_group_bootstrap.csv",
+      "output": "artifacts/results/bootstrap_contrasts.csv",
+      "rows": 4,
+      "sha256": "74ad0591a51758692669c12a136b4f4925075ea76a014fedf46d0cec5016807f"
+    },
+    {
+      "input_sha256": "fdf9941bcafe4b8cfd22403120b9038b66d707756930f6fda7f1e04fc03829fb",
+      "logical_source": "logical:formal600_risk_ablation_summary.csv",
+      "output": "artifacts/results/risk_ablation_summary.csv",
+      "rows": 10,
+      "sha256": "d3564cfb66a10c3d7025ee0638783741d6744b16cefd38dfed9c54aa9a953223"
+    },
+    {
+      "input_sha256": "0b7da40133bc6da39773fb029565bf02f43e9248f5576bd20e72e4f66b3bf930",
+      "logical_source": "logical:formal600_fold_composition.csv",
+      "output": "artifacts/results/fold_composition.csv",
+      "rows": 5,
+      "sha256": "f3b03034023fb8a308b23fcbf91bbeab0f05ada5c04d6ed1fc593b2985cb7390"
+    },
+    {
+      "input_sha256": "c5ae224cd9448ae45de54e4b6107d8b62aa0f37789d3954e22474653ab904468",
+      "logical_source": "logical:largest_component_sensitivity.csv",
+      "output": "artifacts/results/largest_component_sensitivity.csv",
+      "rows": 4,
+      "sha256": "8d2d9ef41bd6d8481e9bc02213f4390890da1e1619c6a0bb4c27cfcfe2621170"
+    },
+    {
+      "input_sha256": "704c5ece81e58d2676b6a2ffb65144a945dfa573eb19fcfbb6cf527bddae2e44",
+      "logical_source": "logical:entity_linking_by_dataset.csv",
+      "output": "artifacts/results/entity_linking_by_dataset.csv",
+      "rows": 4,
+      "sha256": "0c4fa696d36d58e39bd12881985b0254623e28df5711e0d8af3abb27d2231acf"
+    },
+    {
+      "input_sha256": "4931d02c853c492a683d9f7229ac66dc13cefa47fcb0e973dd1d3bbce783ab4b",
+      "logical_source": "logical:pubmedqa_audit_final_distribution.csv",
+      "output": "artifacts/results/pubmedqa_audit_distribution.csv",
+      "rows": 14,
+      "sha256": "75205ff3015e0296b8c56d9c3477e51c66bf9bce059f801ae71a12ef627b5d30"
+    },
+    {
+      "input_sha256": "8024c251a34bef86b531e790143ca3184e43c8f7ef5f16c0c9cda38140fd6e9d",
+      "logical_source": "logical:reviewer_sensitivity_cost_point_estimates.csv",
+      "output": "artifacts/results/reviewer_sensitivity_point_estimates.csv",
+      "rows": 300,
+      "sha256": "ed78b03e8476a938278c1885ab87a51b07984ce572b0f9c6c89e4e1a673550f2"
+    },
+    {
+      "input_sha256": "77a17bfb4580c166e2988f3697d595b272365d833c6dcf0234a096c34ffb0564",
+      "logical_source": "logical:reviewer_sensitivity_cost_bootstrap.csv",
+      "output": "artifacts/results/reviewer_sensitivity_bootstrap.csv",
+      "rows": 300,
+      "sha256": "1b8153e7562bf1afbd4463614d13883804d375e4da2653f7ffd67983864708c7"
+    },
+    {
+      "input_sha256": "b966949f7eca3a0beb307971dd72fa68d8a7e3959ad506707e50ac0e6d3481ab",
+      "logical_source": "logical:cost_utility_point_estimates.csv",
+      "output": "artifacts/results/cost_utility_point_estimates.csv",
+      "rows": 125,
+      "sha256": "5ad317a9a1e975c21d8c9482b0c6245c37db23cea5a83a5e15373fa74b923209"
+    },
+    {
+      "input_sha256": "05d6d6e56d948f7a917f5d79e7aa1a2bbaf9ed1498d060f77975ada03958808e",
+      "logical_source": "logical:kg_runtime_summary.csv",
+      "output": "artifacts/results/kg_runtime_summary.csv",
+      "rows": 6,
+      "sha256": "57249fac690c86ef6b2e8f273436f20c19304e3427fea06e4b9d03e0c48e0b9c"
+    }
+  ],
+  "reference_python": "3.10.11",
+  "release_date": "2026-07-24",
+  "seed": 20260618
+}

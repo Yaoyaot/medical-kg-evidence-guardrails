@@ -1,0 +1,33 @@
+{
+  "master_seed": 20260618,
+  "replicate_seeds": [
+    20260618,
+    20260619,
+    20260620,
+    20260621,
+    20260622,
+    20260623,
+    20260624,
+    20260625,
+    20260626,
+    20260627
+  ],
+  "replicates_per_frame": 10,
+  "labels": [
+    "SUPPORT",
+    "REFUTE",
+    "UNCERTAIN"
+  ],
+  "records_per_label": 200,
+  "near_duplicate_rule": "normalized claim/source exact union plus claim char_wb TF-IDF 3-5 similarity >= 0.90",
+  "selection_rule": "ascending SHA256(seed:id) independently within each label",
+  "full_frame_records": 6454,
+  "matched_source_frame_records": 2000,
+  "no_llm_or_api_calls": true,
+  "outputs": [
+    "full_pool_structural_features.csv",
+    "alternative_sample_metrics.csv",
+    "alternative_sample_membership.csv",
+    "alternative_sample_summary.csv"
+  ]
+}

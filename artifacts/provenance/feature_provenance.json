@@ -1,0 +1,12 @@
+{
+  "execution_status": "passed",
+  "generated_by": "scripts/export_reproducibility_artifacts.py",
+  "input_sha256": "a89baa5144969ff069f74ff614ce4cbec9d8f9e3019113994fea35b242d6dec2",
+  "logical_source": "logical:evidence_scorer_feature_provenance.csv",
+  "path_component_map": "artifacts/data_splits/path_component_map.csv",
+  "released_assignment_file": "artifacts/data_splits/formal600_inner_feature_assignments.csv",
+  "released_assignment_sha256": "503a3bbfb3eb47281bc8230bb32aaadcbcb28d6cdc0d6c88b8ff1a6d711edea9",
+  "scope": "nested Evidence Scorer feature assignments",
+  "scorer_exclusion_manifest": "artifacts/data_splits/scorer_exclusion_manifest.json",
+  "seed": 20260618
+}

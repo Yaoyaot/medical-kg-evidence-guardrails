@@ -1,0 +1,17 @@
+task,model,metric,mean,std
+actionability,logistic_regression,accuracy,0.8359126265992586,0.07283474156000737
+actionability,logistic_regression,macro_f1,0.7390020951980923,0.08628014511676667
+actionability,majority_baseline,accuracy,0.8294740549220496,0.04630261845292564
+actionability,majority_baseline,macro_f1,0.4530555297468945,0.013975254851217948
+actionability,random_forest,accuracy,0.8661674684839769,0.05192390968623585
+actionability,random_forest,macro_f1,0.7160690595359338,0.08455020684810619
+actionability,rule_baseline,accuracy,0.8259236228429104,0.05350774486678301
+actionability,rule_baseline,macro_f1,0.581902813660736,0.09181479488627368
+path_relevance,logistic_regression,accuracy,0.6484032471756203,0.05161377053877083
+path_relevance,logistic_regression,macro_f1,0.5487158178507552,0.08052940209212146
+path_relevance,majority_baseline,accuracy,0.45134799788052216,0.06568522332264709
+path_relevance,majority_baseline,macro_f1,0.2064107732716534,0.021021028313864386
+path_relevance,random_forest,accuracy,0.6396187762491196,0.0671093069981205
+path_relevance,random_forest,macro_f1,0.5594750248963004,0.11195136154268684
+path_relevance,rule_baseline,accuracy,0.45681422248247805,0.05996532724480849
+path_relevance,rule_baseline,macro_f1,0.2959121396080129,0.07021438580711502

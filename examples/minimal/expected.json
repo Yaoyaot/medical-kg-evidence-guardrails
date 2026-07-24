@@ -1,0 +1,8 @@
+{
+  "cases": 2,
+  "all_qualifier_checks_pass": true,
+  "all_predicate_checks_pass": true,
+  "all_relation_checks_pass": true,
+  "all_action_checks_pass": true,
+  "structured_feature_rows": 2
+}

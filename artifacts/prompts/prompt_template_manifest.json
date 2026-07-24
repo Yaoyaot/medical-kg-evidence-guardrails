@@ -1,0 +1,9 @@
+{
+  "bytes": 2113,
+  "path": "artifacts/prompts/prompt_templates.md",
+  "sha256": "71fa137cf6eae4fdb184253cc9ab749fbad7003664c1327c0e92709a7271bcd9",
+  "templates": [
+    "evidence_conditioned_classifier",
+    "pubmedqa_question_to_claim_conversion"
+  ]
+}

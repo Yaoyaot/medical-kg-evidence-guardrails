@@ -1,0 +1,27 @@
+{
+  "actual_request_records": 6000,
+  "endpoint": "https://api.deepseek.com",
+  "expected_request_records": 6000,
+  "failed_request_records": 2,
+  "generation_seed": null,
+  "legacy_prompt_hash_rows": 1800,
+  "limitations": [
+    "Some legacy baseline runs predated per-request prompt hashing.",
+    "Hosted model weights may change without notice.",
+    "Parsed frozen predictions are the authoritative released outputs."
+  ],
+  "maximum_retries": 3,
+  "maximum_tokens": null,
+  "provider": "DeepSeek official API",
+  "raw_response_text_included": false,
+  "recorded_prompt_hash_rows": 4200,
+  "recorded_request_payload_hash_rows": 0,
+  "recorded_retry_count": 0,
+  "request_hash_rows": 6000,
+  "request_model_identifier": "deepseek-v4-flash",
+  "request_payload_hash_limitation": "Historical payload hashes were not persisted; the released prompt hashes and parsed-record hashes are reported without back-filling unverifiable payload hashes.",
+  "retry_policy": "exponential backoff",
+  "temperature": 0,
+  "timeout_seconds": 60,
+  "top_p": null
+}

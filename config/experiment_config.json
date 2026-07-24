@@ -1,0 +1,25 @@
+{
+  "seed": 20260618,
+  "formal600_records": 600,
+  "formal600_labels": {
+    "SUPPORT": 200,
+    "REFUTE": 200,
+    "UNCERTAIN": 200
+  },
+  "outer_folds": 5,
+  "bootstrap_iterations": 5000,
+  "review_budgets": [0.01, 0.02, 0.05, 0.1, 0.2],
+  "primary_risk_model": "full_without_dataset_source",
+  "llm": {
+    "provider": "DeepSeek official API",
+    "endpoint": "https://api.deepseek.com",
+    "request_model_identifier": "deepseek-v4-flash",
+    "temperature": 0,
+    "generation_seed": null,
+    "top_p": null,
+    "maximum_tokens": null,
+    "timeout_seconds": 60,
+    "maximum_retries": 3,
+    "retry_policy": "exponential backoff"
+  }
+}

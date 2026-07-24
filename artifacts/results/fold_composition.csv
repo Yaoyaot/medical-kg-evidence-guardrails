@@ -1,0 +1,6 @@
+fold,components,records,support_gold,refute_gold,uncertain_gold,healthver,medaesqa,scifact,support_predictions,false_support_predictions,nominal_5pct_review_count
+0,23,146,58,44,44,32,94,20,34,8,8
+1,37,114,36,39,39,66,22,26,18,7,6
+2,37,113,35,39,39,66,21,26,27,13,6
+3,37,113,35,39,39,66,21,26,27,10,6
+4,38,114,36,39,39,66,22,26,27,7,6

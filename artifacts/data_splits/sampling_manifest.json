@@ -1,0 +1,20 @@
+{
+  "all_feature_rows_exclude_own_component_fold": true,
+  "all_risk_training_features_exclude_outer_test_fold": true,
+  "component_rule": "connected components over exact normalized claim, exact normalized source, or claim character n-gram TF-IDF cosine similarity >=0.90",
+  "components": 172,
+  "feature_assignment_rows": 3000,
+  "formal600_selection_rule": "sort record IDs lexicographically within each frozen label and take the first 200",
+  "inner_assignment_note": "formal600_inner_folds.csv records nested Evidence-Scorer feature assignments; it is not a newly sampled partition",
+  "outer_fold_counts": {
+    "0": 146,
+    "1": 114,
+    "2": 113,
+    "3": 113,
+    "4": 114
+  },
+  "path_annotation_rows": 474,
+  "records": 600,
+  "sampling_frame": "standardized_claim_evidence_pool_6454",
+  "seed": 20260618
+}

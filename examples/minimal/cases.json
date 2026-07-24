@@ -1,0 +1,28 @@
+[
+  {
+    "id": "synthetic_1",
+    "claim": "Drug X treats Disease Y in adults at 50 mg daily.",
+    "relation": "treats",
+    "path_type": "1-hop",
+    "path_score": 0.9,
+    "endpoint_aligned": true,
+    "predicate_aligned": true,
+    "expected_qualifiers": ["NUMERIC", "POPULATION", "DOSAGE"],
+    "expected_predicates": ["TREATS"],
+    "expected_relation_family": "TREATS",
+    "expected_support_allowed": true
+  },
+  {
+    "id": "synthetic_2",
+    "claim": "Drug X causes nausea after treatment.",
+    "relation": "adverse_event_context",
+    "path_type": "1-hop",
+    "path_score": 0.7,
+    "endpoint_aligned": true,
+    "predicate_aligned": false,
+    "expected_qualifiers": ["TEMPORAL"],
+    "expected_predicates": ["TREATS", "CAUSES"],
+    "expected_relation_family": "CONTEXT_ONLY",
+    "expected_support_allowed": false
+  }
+]

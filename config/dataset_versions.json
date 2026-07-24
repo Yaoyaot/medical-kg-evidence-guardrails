@@ -1,0 +1,38 @@
+{
+  "medfact_bench": {
+    "revision": "249028c",
+    "redistributed": false,
+    "notes": "Only record IDs, frozen labels, hashes, and derived predictions are included."
+  },
+  "pubmedqa": {
+    "dataset": "qiaojin/PubMedQA",
+    "configuration": "pqa_labeled",
+    "split": "train",
+    "records": 1000,
+    "dataset_viewer": "https://datasets-server.huggingface.co",
+    "redistributed": "record IDs, mapped labels, text hashes, frozen predictions, and audit decisions only"
+  },
+  "hetionet": {
+    "version": "v1.0",
+    "url": "https://het.io/"
+  },
+  "primekg": {
+    "dataverse_datafile_id": 6180620,
+    "download_date": "2026-05-30",
+    "url": "https://dataverse.harvard.edu/"
+  },
+  "mondo": {
+    "version": "2026-05-05",
+    "url": "https://mondo.monarchinitiative.org/"
+  },
+  "hgnc": {
+    "download_date": "2026-05-30",
+    "url": "https://www.genenames.org/"
+  },
+  "umls": {
+    "release": "2026AA",
+    "url": "https://www.nlm.nih.gov/research/umls/",
+    "redistributed": false,
+    "access": "A valid UMLS license is required."
+  }
+}

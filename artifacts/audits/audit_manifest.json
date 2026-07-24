@@ -1,0 +1,54 @@
+{
+  "analyzed_by": "scripts/analyze_stage9_human_audits.py",
+  "artifact_expected_rows": 26,
+  "artifact_rows": 26,
+  "entity_linking_audit_expected_rows": 120,
+  "entity_linking_audit_rows": 120,
+  "entity_linking_disagreement_rows": 77,
+  "files": [
+    {
+      "bytes": 191694,
+      "path": "artifacts/audits/entity_linking_audit_anonymized.csv",
+      "sha256": "5e49b595db2050cf7c65c0c8c6ddcd82020eb3b40faaa5a425309d9eb77ca64d"
+    },
+    {
+      "bytes": 1529,
+      "path": "artifacts/audits/human_audit_guideline.md",
+      "sha256": "c4dd1c2344894888dc8785c39cc1c0aa59b61ea2fd8efaa598cc144929a96f56"
+    },
+    {
+      "bytes": 174707,
+      "path": "artifacts/audits/path_annotations_modeling_pool_anonymized.csv",
+      "sha256": "8dd1bc244d91692b0a99556568a6bbca796ab0530d71c88dc0925f4ee8307b44"
+    },
+    {
+      "bytes": 2856,
+      "path": "artifacts/audits/path_exclusion_manifest.csv",
+      "sha256": "00e7034cf4c02caa8b7e0fec98acc383529e4ec87f429e4db229ec57163b96ce"
+    },
+    {
+      "bytes": 33870,
+      "path": "artifacts/audits/path_overlap200_adjudication_anonymized.csv",
+      "sha256": "e4a83d86f220dcd84e40243d9cface2ec7a498f31af0c6a3d92e9224eaf1a7a4"
+    },
+    {
+      "bytes": 18940,
+      "path": "artifacts/audits/pubmedqa_mapping_audit_anonymized.csv",
+      "sha256": "a272fb9cca8d9e48b7304c4010d24bacf31b6595a975f3cc2cd24b2fa8c87eb0"
+    }
+  ],
+  "free_text_notes_removed": true,
+  "full_upstream_claim_and_question_text_removed": true,
+  "generated_by": "scripts/export_reproducibility_artifacts.py",
+  "identity_fields_removed": true,
+  "path_modeling_expected_rows": 474,
+  "path_modeling_rows": 474,
+  "path_overlap_disagreement_rows": 111,
+  "path_overlap_expected_rows": 200,
+  "path_overlap_rows": 200,
+  "pubmedqa_audit_expected_rows": 60,
+  "pubmedqa_audit_rows": 60,
+  "pubmedqa_disagreement_rows": 7,
+  "short_annotated_biomedical_mention_spans_retained": true,
+  "source_context_removed": true
+}

@@ -1,0 +1,3 @@
+sampling_frame,replicates,dataset_composition_median_range,components_median_range,largest_component_records_median_range,largest_component_share_pct_median_range,entity_linked_pct_median_range,local_path_pct_median_range,direct_edge_pct_median_range,predicate_aligned_pct_median_range,qualifier_compatible_count_median_range
+full_6454_pool,10,pubhealth 413 [396-424]; healthver 95 [85-116]; medaesqa 58 [49-68]; scifact 36 [26-39],536 [517-550],8 [6-12],1.3 [1.0-2.0],57.2 [55.2-61.3],19.3 [16.3-21.0],4.8 [4.0-6.5],0.25 [0.00-0.50],0 [0-1]
+matched_source_frame,10,pubhealth 0 [0-0]; healthver 318 [304-323]; medaesqa 168 [158-174]; scifact 116 [108-124],218 [214-226],29 [25-48],4.8 [4.2-8.0],73.5 [71.7-74.5],30.7 [27.7-33.7],10.5 [8.8-12.0],1.00 [0.50-1.83],2 [0-5]

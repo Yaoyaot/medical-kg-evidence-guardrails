@@ -1,6 +1,9 @@
 # Data and licensing requirements
 
-Generated data are not committed to this code-only repository. Full reconstruction requires local copies of the following resources and preserves their original licenses.
+Large generated data and restricted upstream resources are not committed.
+Small curated artifacts needed to verify the paper are released under
+`artifacts/`. Full reconstruction requires local copies of the following
+resources and preserves their original licenses.
 
 | Resource | Role | Notes |
 |---|---|---|
@@ -35,15 +38,22 @@ All of these generated locations are ignored by Git. Scripts create output direc
 
 Each path is overrideable through the script CLI. The group manifest and verifier results must contain exactly the same 600 IDs. Path annotations connected to an outer test component are excluded from that fold's Evidence Scorer training.
 
-## Reproducibility records to preserve locally
+## Released and locally retained reproducibility records
 
-For exact reproduction, retain:
+The anonymous repository releases sanitized versions of:
 
 - claim/source component IDs and fold assignments;
 - annotation guidelines, independent labels, and adjudication decisions;
-- prompt templates, request payload hashes, response hashes, and model identifier;
+- prompt templates, available prompt hashes, parsed-prediction hashes, and model identifier;
 - KG resource versions, cleaning parameters, and relation mappings;
 - random seed `20260618` and bootstrap iteration counts;
 - the environment configuration used for each run.
 
-Never commit API keys, licensed UMLS files, patient-identifying information, generated model responses, completed audit forms, or paper manuscripts to this code-only repository.
+The private workspace additionally retains restricted upstream files and raw
+response archives. Never commit API keys, licensed UMLS files,
+patient-identifying information, identity-bearing audit notes, raw response
+text, or paper manuscripts.
+
+Historical request-payload and raw-response archive hashes were not
+consistently persisted. The repository marks those fields unavailable rather
+than manufacturing hashes after the fact.

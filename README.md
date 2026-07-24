@@ -1,102 +1,214 @@
 # Medical KG Evidence Guardrails
 
-Core experimental code for **risk-aware, evidence-conditioned biomedical claim verification with local medical knowledge graphs**.
+Anonymous review repository for **risk-aware, evidence-conditioned biomedical
+claim verification with local medical knowledge graphs**.
 
-This repository contains executable research code only. Figures, generated tables, raw or frozen model predictions, completed annotation forms are intentionally excluded.
+## Scope
 
-## Included pipeline
+The repository contains:
 
-- biomedical claim normalization and PubMedQA-to-claim construction;
-- Hetionet/PrimeKG graph building, semantic cleaning, and terminology integration;
-- rule-based entity linking and bounded 1/2-hop local-subgraph retrieval;
-- predicate, direction, endpoint, and qualifier compatibility checks;
-- path-level Evidence Scorer training and strict nested cross-fitting;
-- provided-text and text/KG evidence-conditioned LLM baselines;
-- grouped risk evaluation, matched-budget review routing, bootstrap analysis, and transfer diagnostics;
-- dual-annotator audit preparation, adjudication, and reliability analysis;
-- largest-component and alternative label-balanced structural sensitivity analyses.
+- core experiment, graph, audit, and statistical analysis code;
+- frozen Formal600 and PubMedQA parsed predictions without raw API responses;
+- component, fold, and Evidence Scorer exclusion records;
+- anonymized path, PubMedQA mapping, and entity-linking audit materials;
+- prompt templates and request-hash manifests;
+- machine-readable result tables and provenance;
+- a no-network synthetic smoke test;
+- one-command quick and frozen-result verification.
+
+It excludes API credentials, UMLS licensed content, large knowledge graphs,
+third-party paired source text, raw API response archives, manuscripts,
+identity-bearing annotation notes, caches, logs, and debugging outputs.
 
 ## Repository layout
 
 ```text
-scripts/                  Core experiment, audit, and analysis programs
-config/kg_resources.json Frozen KG resource/version metadata
-docs/PIPELINE.md          Execution order and stage descriptions
-docs/DATA_REQUIREMENTS.md Required local inputs and licensing notes
-requirements.txt          Runtime Python dependencies
-.env.example              Environment-variable template without credentials
+artifacts/                 Curated splits, predictions, audits, and results
+config/                    Frozen resource and experiment metadata
+docs/                      Pipeline, data, artifact, and license documentation
+environment/               Reference environment information
+examples/minimal/          No-network synthetic smoke test
+scripts/                   Core experiment and validation programs
+reproduce_quick.py         Dependency-light repository verification
+reproduce_frozen_results.py Recompute primary point estimates
+reproduce_full_pipeline.py  Preflight externally resourced reconstruction
 ```
 
 ## Installation
 
-The reported experiments used Python 3.11. The repository validation also runs under Python 3.12.
+The frozen statistical/model environment used Python 3.10.11. A compatible
+environment can be created with either pip or conda.
 
 ```bash
 python -m venv .venv
-```
-
-Activate the environment:
-
-```bash
-# Linux/macOS
-source .venv/bin/activate
-
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
-```
-
-Install the declared dependencies and validate the code-only checkout:
-
-```bash
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-python scripts/validate_repository.py
+python -m pip install -r requirements-lock.txt
 ```
 
-The validation command parses every Python file, checks declared third-party dependencies, runs `--help` for every command-line entry point, verifies the DeepSeek configuration template, and rejects tracked manuscripts or generated artifacts. It does not call an API or require experiment data.
+Alternatively:
 
-## Configuration
+```bash
+conda env create -f environment/environment.yml
+conda activate medical-kg-evidence-guardrails
+```
 
-`.env.example` records the endpoint and request identifier used by the reported runs. The scripts read environment variables from the current process; they do **not** automatically load a local `.env` file. Set credentials in the shell or pass the corresponding command-line options.
+The looser `requirements.txt` is retained for development compatibility;
+`requirements-lock.txt` is the authoritative frozen package set.
+
+## Quick validation
+
+```bash
+python reproduce_quick.py
+```
+
+Expected final line:
+
+```text
+Quick validation passed: repository, manifests, and synthetic rules.
+```
+
+This command does not use the network, an API credential, UMLS, or experiment
+data outside the repository.
+
+## Frozen-result verification
+
+```bash
+python reproduce_frozen_results.py
+```
+
+The command recomputes:
+
+- Formal600 and PubMedQA fair-input classification metrics;
+- fold-allocated matched-budget review-routing point estimates;
+- primary 5% routing quantities from the released unseen-component scores.
+- compact verification tables and three data-derived reviewer figures.
+
+It checks the recomputed values against `artifacts/results/` and writes only
+ignored outputs under `outputs/reproduced/`. It does not call an API.
+
+## Full reconstruction
+
+Full reconstruction requires upstream datasets, Hetionet, PrimeKG, Mondo,
+HGNC, and a valid UMLS license for the UMLS branch. Hosted-model baselines also
+require a DeepSeek credential and may not reproduce identical text because
+provider-side weights can change.
+
+Follow:
+
+1. `docs/THIRD_PARTY_DATA.md`;
+2. `docs/DATA_REQUIREMENTS.md`;
+3. `docs/PIPELINE.md`.
+
+Run the non-destructive preflight before starting:
+
+```bash
+python reproduce_full_pipeline.py --strict
+```
+
+Add `--require-umls` and/or `--require-api` only for branches that use those
+resources. The entry point checks availability and prints the ordered
+reconstruction route; it does not download licensed data or silently initiate
+paid requests.
+
+All command-line entry points expose their accepted paths through `--help`.
+The primary component-controlled analysis is:
+
+```bash
+python scripts/evaluate_eswa_nested_path_crossfit.py --help
+```
+
+For each outer fold it excludes linked path annotations from the Evidence
+Scorer and uses inner out-of-fold scorer features for risk-model training.
+
+## Released artifacts
+
+### Data splits and leakage controls
+
+`artifacts/data_splits/` contains Formal600 membership, claim/source component
+IDs, outer folds, inner feature assignments, path-to-component mappings, and
+scorer exclusion manifests. Claim and paired-source text are represented by
+hashes in the split files.
+
+### Predictions and risk scores
+
+`artifacts/predictions/` contains parsed labels, confidence, error status,
+prompt-hash availability, and risk scores. Raw response text and model
+reasoning are not included.
+
+### Human audits
+
+`artifacts/audits/` contains anonymized path labels, overlap adjudication,
+artifact exclusions, PubMedQA conversion/label audit, and entity-linking
+audit. Full upstream claims, questions, source excerpts, annotator identity,
+free-text notes, and local paths have been removed. Stable IDs and SHA-256
+text hashes support reconstruction and integrity checks after users obtain the
+upstream datasets. Short biomedical mention spans required to recompute the
+entity-linking audit are retained.
+
+### Results
+
+`artifacts/results/` contains the machine-readable inputs for the main
+empirical tables and figures. `docs/PAPER_ARTIFACT_MAP.md` maps claims and
+outputs to their verification route.
+
+### Reviewer-motivated structural sensitivity
+
+The ten deterministic alternative samples within each frame may overlap.
+Their minimum–maximum ranges are descriptive summaries of selected seeds, not
+confidence intervals, independent sampling replicates, or external performance
+validation.
+
+## API/model disclosure
+
+The reported requests used:
+
+- DeepSeek official API;
+- request model identifier `deepseek-v4-flash`;
+- temperature `0`;
+- no generation seed;
+- provider-default maximum tokens;
+- up to three retries with exponential backoff.
+
+`.env.example` contains no credential. The scripts read variables from the
+current process and do not automatically load a local `.env`.
 
 ```powershell
-# Windows PowerShell example
 $env:OPENAI_BASE_URL = "https://api.deepseek.com"
 $env:OPENAI_MODEL = "deepseek-v4-flash"
 $env:OPENAI_API_KEY = "<your-key>"
 ```
 
-```bash
-# Linux/macOS example
-export OPENAI_BASE_URL="https://api.deepseek.com"
-export OPENAI_MODEL="deepseek-v4-flash"
-export OPENAI_API_KEY="<your-key>"
-```
+API access is not needed for released frozen-result verification.
 
-UMLS reconstruction additionally requires `UMLS_API_KEY` and a valid UMLS license. Never commit credentials or licensed UMLS-derived files.
+## Integrity
 
-## Running the research pipeline
-
-Run commands from the repository root. Generated inputs and outputs are expected under `data/` and `outputs/`, which are ignored by Git. The repository does not include those files, so the full experiments require the resources and intermediate schemas documented in [docs/DATA_REQUIREMENTS.md](docs/DATA_REQUIREMENTS.md).
-
-Use [docs/PIPELINE.md](docs/PIPELINE.md) for the ordered workflow. Every CLI exposes its accepted paths and options:
+`CODE_MANIFEST.json` is the canonical manifest. `SHA256SUMS.txt` is generated
+from the same file set. Neither manifest includes itself.
 
 ```bash
-python scripts/evaluate_eswa_nested_path_crossfit.py --help
-python scripts/analyze_eswa_fold_component_sensitivity.py --help
-python scripts/analyze_alternative_balanced_samples.py --help
+python scripts/rebuild_repository_manifest.py --check
+python scripts/validate_repository.py
 ```
 
-The primary leakage-controlled Formal600 analysis is `evaluate_eswa_nested_path_crossfit.py`. It excludes outer-fold-linked path annotations when fitting the Evidence Scorer and uses inner out-of-fold scorer features for risk-model training. The alternative balanced-sample analysis is reviewer-motivated and post-hoc; its deterministic samples may overlap and its minimum–maximum ranges are descriptive, not confidence intervals.
+The validator supports both a Git checkout and a downloaded archive without
+`.git`.
 
 ## Interpretation boundaries
 
-- Formal600 is a frozen label-balanced diagnostic subset, not a probability sample of the full standardized pool.
-- PubMedQA-Claim-300 is a QA-derived label-noise stress test, not clinical validation or a clean confirmatory external gold standard.
-- Local KG connectivity is a candidate evidence signal, not automatic claim-level support.
-- The frozen request identifier is `deepseek-v4-flash`; hosted model weights may change without notice.
-- No software license is granted unless a `LICENSE` file is added explicitly.
+- Formal600 is a frozen label-balanced diagnostic subset, not a probability
+  sample of the standardized pool.
+- PubMedQA-Claim-300 is a QA-derived label-noise stress test, not clinical
+  validation or a clean confirmatory external gold standard.
+- Automatic KG coverage is a candidate-coverage funnel, not reliable semantic
+  coverage.
+- Local KG connectivity is not automatic claim-level support.
+- The hosted request identifier does not guarantee immutable provider weights.
 
-## Citation
+## Licensing and data availability
 
-Citation metadata will be added after publication.
+Original repository code is released under the MIT License. Third-party
+resources retain their upstream licenses and are described in
+`THIRD_PARTY_LICENSES.md`.
+
+This anonymous repository is intended for peer review. Citation metadata and a
+permanent archival identifier will be added after publication.

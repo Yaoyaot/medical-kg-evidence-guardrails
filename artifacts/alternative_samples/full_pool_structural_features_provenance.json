@@ -1,0 +1,12 @@
+{
+  "compact_file": "data/processed/stage14_alternative_balanced_samples/full_pool_structural_features.csv",
+  "compact_sha256": "cd56fefae480c8f1c43d1926f2d95bb9dbdce9c7806b0c28500c8f0cf42e2205",
+  "created_without_api_calls": true,
+  "public_export": "normalized claim text removed and replaced with SHA-256",
+  "records": 6454,
+  "source_file": "logical:standardized_full_pool_6454",
+  "source_location_class": "upstream full workspace input; not included in the compact anonymous package",
+  "source_logical_id": "frozen_stage2_relation_aware_strict_evidence_v1",
+  "source_repository_path": "data/processed/stage2_primekg_semantic_clean/strict_verifier/strict_kg_evidence.jsonl",
+  "source_sha256": "671c1a00b9d40fcb93a98576e09be67e3e453eb871c70e7e0616d03fa95dfe6d"
+}

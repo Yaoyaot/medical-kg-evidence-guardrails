@@ -1,15 +1,28 @@
 # Experimental pipeline
 
-Run every command from the repository root. Paths shown below are repository-relative defaults; use `python scripts/<name>.py --help` to inspect overrideable arguments. Generated files are not committed.
+Run every command from the repository root. Paths shown below are
+repository-relative defaults; use `python scripts/<name>.py --help` to inspect
+overrideable arguments. Large generated files are not committed; curated
+review artifacts are released under `artifacts/`.
 
-## 0. Code-only validation
+## 0. Quick and frozen-result validation
 
 ```bash
-python -m pip install -r requirements.txt
-python scripts/validate_repository.py
+python -m pip install -r requirements-lock.txt
+python reproduce_quick.py
+python reproduce_frozen_results.py
 ```
 
-This check requires no data and issues no API requests.
+These checks require no external data and issue no API requests.
+
+Before attempting a resource-dependent reconstruction, run:
+
+```bash
+python reproduce_full_pipeline.py --strict
+```
+
+This is a preflight only. It reports missing resource classes and never
+downloads licensed data or initiates hosted-model requests.
 
 ## 1. Claims and biomedical resources
 
@@ -38,7 +51,9 @@ This check requires no data and issues no API requests.
 5. `prepare_stage9_audit_adjudication.py` validates completed independent annotations and creates adjudication tables.
 6. `analyze_stage9_human_audits.py` computes adjudicated conversion, label-compatibility, and entity-linking audit statistics.
 
-Completed annotation and adjudication files are intentionally excluded from this public code repository.
+Sanitized annotations and adjudications are released under `artifacts/audits/`.
+Identity-bearing notes, paired source excerpts, and licensed alias content are
+excluded.
 
 ## 4. Formal600 verifier inputs
 

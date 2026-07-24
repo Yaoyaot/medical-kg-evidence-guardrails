@@ -1,0 +1,5 @@
+variant,input_claims,entity_linking_claims,any_path_claims,direct_edge_claims,predicate_aligned_claims,entity_linking_coverage,any_path_coverage,direct_edge_coverage,predicate_aligned_coverage,strict_evidence_conversion_rate
+mvp_hetionet,6454,2428,155,73,8,0.3762,0.024,0.0113,0.0012,0.051613
+expanded_open_aliases,6454,3068,310,231,16,0.4754,0.048,0.0358,0.0025,0.051613
+expanded_open_umls_aliases,6454,3554,379,248,16,0.5507,0.0587,0.0384,0.0025,0.042216
+primekg_fusion_relation_aware,6454,3686,1444,342,27,0.5711,0.2237,0.053,0.0042,0.018698

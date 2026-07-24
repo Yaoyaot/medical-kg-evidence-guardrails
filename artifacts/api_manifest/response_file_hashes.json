@@ -1,0 +1,21 @@
+{
+  "raw_response_file_hashes_available": false,
+  "raw_response_files_released": false,
+  "reason": "Raw hosted-model response archives are intentionally withheld and historical archive hashes were not consistently persisted.",
+  "released_parsed_prediction_files": [
+    {
+      "bytes": 2585428,
+      "parser": "scripts/export_reproducibility_artifacts.py",
+      "path": "artifacts/predictions/formal600_predictions.jsonl",
+      "rows": 4200,
+      "sha256": "f98901a077528e1f6993527335f805fa931ec5d99ef0ef39fb0d9a41f39179c9"
+    },
+    {
+      "bytes": 1116842,
+      "parser": "scripts/export_reproducibility_artifacts.py",
+      "path": "artifacts/predictions/pubmedqa_claim300_predictions.jsonl",
+      "rows": 1800,
+      "sha256": "ad144aa65b5e2088fd7b88d52c1d8a1e580f71875ccc3afac74187725ca967aa"
+    }
+  ]
+}

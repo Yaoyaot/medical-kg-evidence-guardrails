@@ -363,7 +363,7 @@ def main() -> None:
     parser.add_argument("--output-name", default="eswa_baseline_smoke_semantic_clean.jsonl")
     parser.add_argument("--prompt-preview-name", default="eswa_baseline_smoke_prompt_preview.jsonl")
     parser.add_argument("--model", default=os.getenv("LLM_MODEL") or os.getenv("OPENAI_MODEL") or "deepseek-v4-flash")
-    parser.add_argument("--base-url", default=os.getenv("OPENAI_BASE_URL") or os.getenv("LLM_BASE_URL") or "https://api.openai.com/v1")
+    parser.add_argument("--base-url", default=os.getenv("OPENAI_BASE_URL") or os.getenv("LLM_BASE_URL") or "https://api.deepseek.com")
     parser.add_argument("--timeout", type=int, default=int(os.getenv("LLM_TIMEOUT_SECONDS", "60")))
     parser.add_argument("--max-retries", type=int, default=int(os.getenv("LLM_MAX_RETRIES", "3")))
     parser.add_argument("--max-source-chars", type=int, default=6000)

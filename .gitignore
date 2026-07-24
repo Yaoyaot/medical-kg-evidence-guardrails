@@ -24,6 +24,8 @@ tmp/
 render*/
 manuscript/
 figures/
+!scripts/figures/
+!scripts/figures/*.py
 *.log
 
 *.docx
@@ -31,3 +33,7 @@ figures/
 *.png
 *.svg
 *.zip
+
+# Small, curated, machine-readable review artifacts are versioned under
+# artifacts/. Bulky generated experiment directories remain excluded above.
+artifacts/provenance/local_export_report.json

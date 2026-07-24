@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import ast
 import hashlib
 import json
@@ -41,6 +42,22 @@ FORBIDDEN_TRACKED_SUFFIXES = {
     ".pyc",
     ".pyo",
 }
+MANIFEST_FILES = {"CODE_MANIFEST.json", "SHA256SUMS.txt"}
+ENUMERATION_IGNORES = {
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".ruff_cache",
+    "outputs",
+    "logs",
+    "debug",
+    "scratch",
+    "tmp",
+    "render",
+}
 
 
 def requirement_names() -> set[str]:
@@ -57,25 +74,85 @@ def requirement_names() -> set[str]:
 
 
 def tracked_files() -> list[str]:
-    completed = subprocess.run(
-        ["git", "ls-files", "-z"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-    )
-    return [item for item in completed.stdout.decode("utf-8").split("\0") if item]
+    if (ROOT / ".git").exists():
+        completed = subprocess.run(
+            ["git", "ls-files", "-z"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        )
+        output = [
+            item for item in completed.stdout.decode("utf-8").split("\0") if item
+        ]
+        untracked = subprocess.run(
+            ["git", "ls-files", "--others", "--exclude-standard", "-z"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        )
+        output.extend(
+            item for item in untracked.stdout.decode("utf-8").split("\0") if item
+        )
+        return sorted(set(output))
+    output = []
+    for path in ROOT.rglob("*"):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(ROOT)
+        if any(part in ENUMERATION_IGNORES for part in relative.parts):
+            continue
+        if relative.as_posix() == "artifacts/provenance/local_export_report.json":
+            continue
+        if path.suffix.lower() in {".pyc", ".pyo"}:
+            continue
+        output.append(relative.as_posix())
+    return sorted(output)
+
+
+def file_bytes(relative: str) -> bytes | None:
+    path = ROOT / relative
+    if not path.is_file():
+        return None
+    return path.read_bytes()
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Validate the code and released reproducibility artifacts."
+    )
+    parser.add_argument(
+        "--skip-cli-help",
+        action="store_true",
+        help="Skip importing every CLI; useful for the dependency-light quick check.",
+    )
+    args = parser.parse_args()
     checks: dict[str, bool] = {}
     details: dict[str, object] = {}
     required = [
         "README.md",
+        "LICENSE",
+        "THIRD_PARTY_LICENSES.md",
         "requirements.txt",
+        "requirements-lock.txt",
         ".env.example",
         "config/kg_resources.json",
+        "config/dataset_versions.json",
+        "config/experiment_config.json",
         "docs/PIPELINE.md",
         "docs/DATA_REQUIREMENTS.md",
+        "docs/THIRD_PARTY_DATA.md",
+        "docs/PAPER_ARTIFACT_MAP.md",
+        "reproduce_quick.py",
+        "reproduce_frozen_results.py",
+        "reproduce_full_pipeline.py",
+        "artifacts/predictions/formal600_predictions.jsonl",
+        "artifacts/predictions/risk_routing_scores.csv",
+        "artifacts/data_splits/formal600_membership.csv",
+        "artifacts/data_splits/claim_component_map.csv",
+        "artifacts/data_splits/formal600_inner_folds.csv",
+        "artifacts/data_splits/scorer_exclusion_manifest.json",
+        "artifacts/api_manifest/response_file_hashes.json",
+        "artifacts/provenance/feature_provenance.json",
     ]
     checks["required_files_present"] = all((ROOT / item).is_file() for item in required)
 
@@ -120,19 +197,20 @@ def main() -> None:
     help_failures: list[str] = []
     subprocess_env = os.environ.copy()
     subprocess_env["PYTHONDONTWRITEBYTECODE"] = "1"
-    for path in cli_scripts:
-        completed = subprocess.run(
-            [sys.executable, str(path), "--help"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            timeout=30,
-            env=subprocess_env,
-        )
-        if completed.returncode != 0:
-            help_failures.append(
-                f"{path.name}: {completed.stderr.strip() or completed.stdout.strip()}"
+    if not args.skip_cli_help:
+        for path in cli_scripts:
+            completed = subprocess.run(
+                [sys.executable, str(path), "--help"],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                timeout=30,
+                env=subprocess_env,
             )
+            if completed.returncode != 0:
+                help_failures.append(
+                    f"{path.name}: {completed.stderr.strip() or completed.stdout.strip()}"
+                )
     checks["all_cli_help_commands_succeed"] = not help_failures
     details["help_failures"] = help_failures
     details["cli_scripts_checked"] = len(cli_scripts)
@@ -151,9 +229,10 @@ def main() -> None:
         if Path(normalized).suffix in FORBIDDEN_TRACKED_SUFFIXES:
             forbidden.append(item)
             continue
-        if any(
-            marker in parts or normalized.startswith(marker + "/")
+        if "__pycache__" in parts or any(
+            normalized.startswith(marker + "/")
             for marker in FORBIDDEN_TRACKED_PARTS
+            if marker != "__pycache__"
         ):
             forbidden.append(item)
     checks["no_generated_or_manuscript_artifacts_tracked"] = not forbidden
@@ -163,26 +242,65 @@ def main() -> None:
     manifest_rows = {row["path"]: row for row in manifest.get("files", [])}
     manifest_mismatches: list[str] = []
     for relative, row in manifest_rows.items():
-        blob = subprocess.run(
-            ["git", "show", f":{relative}"],
-            cwd=ROOT,
-            capture_output=True,
-        )
-        if blob.returncode != 0:
+        data = file_bytes(relative)
+        if data is None:
             manifest_mismatches.append(f"missing:{relative}")
             continue
-        data = blob.stdout
         if len(data) != int(row["bytes"]):
             manifest_mismatches.append(f"bytes:{relative}")
         digest = hashlib.sha256(data).hexdigest()
         if digest != row["sha256"]:
             manifest_mismatches.append(f"sha256:{relative}")
-    expected_tracked = {item for item in tracked if item != "CODE_MANIFEST.json"}
+    expected_tracked = {item for item in tracked if item not in MANIFEST_FILES}
     checks["code_manifest_hashes_match"] = not manifest_mismatches
     checks["code_manifest_covers_tracked_files"] = set(manifest_rows) == expected_tracked
     details["manifest_mismatches"] = manifest_mismatches
     details["manifest_missing_tracked"] = sorted(expected_tracked - set(manifest_rows))
     details["manifest_untracked_entries"] = sorted(set(manifest_rows) - expected_tracked)
+
+    sums_path = ROOT / "SHA256SUMS.txt"
+    expected_sums = {
+        row["path"]: row["sha256"] for row in manifest.get("files", [])
+    }
+    actual_sums: dict[str, str] = {}
+    if sums_path.exists():
+        for line in sums_path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            digest, relative = line.split("  ", 1)
+            actual_sums[relative] = digest
+    checks["sha256sums_matches_code_manifest"] = actual_sums == expected_sums
+
+    forbidden_identity_patterns = {
+        "public_github_owner": "yao" + "yaot",
+        "public_repository_url": "github.com/" + "yao" + "yaot/",
+        "local_windows_user": "\\\\users\\\\" + "len" + "ovo",
+        "local_workspace": "e:\\\\" + "knowledge graph\\\\code",
+    }
+    identity_hits: list[str] = []
+    for relative in tracked:
+        path = ROOT / relative
+        if path.suffix.lower() not in {
+            ".py",
+            ".md",
+            ".txt",
+            ".json",
+            ".jsonl",
+            ".csv",
+            ".yml",
+            ".yaml",
+            ".example",
+        }:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8").lower()
+        except UnicodeDecodeError:
+            continue
+        for name, pattern in forbidden_identity_patterns.items():
+            if pattern in text:
+                identity_hits.append(f"{name}:{relative}")
+    checks["no_known_identity_or_absolute_path_leaks"] = not identity_hits
+    details["identity_or_path_hits"] = identity_hits
 
     report = {
         "status": "passed" if all(checks.values()) else "failed",

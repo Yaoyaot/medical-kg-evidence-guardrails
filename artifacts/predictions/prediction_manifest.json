@@ -1,0 +1,48 @@
+{
+  "files": [
+    {
+      "bytes": 2585428,
+      "path": "artifacts/predictions/formal600_predictions.jsonl",
+      "sha256": "f98901a077528e1f6993527335f805fa931ec5d99ef0ef39fb0d9a41f39179c9"
+    },
+    {
+      "bytes": 1116842,
+      "path": "artifacts/predictions/pubmedqa_claim300_predictions.jsonl",
+      "sha256": "ad144aa65b5e2088fd7b88d52c1d8a1e580f71875ccc3afac74187725ca967aa"
+    },
+    {
+      "bytes": 5636280,
+      "path": "artifacts/predictions/evidence_scorer_oof_predictions.jsonl",
+      "sha256": "5f574940198823bf47380a117b843c61f2a262a77cc90a30c94df37a2fe483df"
+    },
+    {
+      "bytes": 190455,
+      "path": "artifacts/predictions/risk_routing_scores.csv",
+      "sha256": "960371751052eeacee68dd0c991029b642e78912383c1b42f630fc7a9e855966"
+    }
+  ],
+  "formal600_duplicate_method_record_pairs": 0,
+  "formal600_expected_rows_per_method": 600,
+  "formal600_method_counts": {
+    "bm25_only_diagnostic": 600,
+    "direct_llm": 600,
+    "kg_only_local_paths_diagnostic": 600,
+    "provided_text": 600,
+    "provided_text_plus_extra_bm25": 600,
+    "provided_text_plus_kg_paths": 600,
+    "provided_text_plus_kg_plus_extra_bm25": 600
+  },
+  "generated_by": "scripts/export_reproducibility_artifacts.py",
+  "pubmedqa_duplicate_method_record_pairs": 0,
+  "pubmedqa_expected_rows_per_method": 300,
+  "pubmedqa_method_counts": {
+    "direct_llm": 300,
+    "kg_only_local_paths_diagnostic": 300,
+    "provided_text": 300,
+    "provided_text_plus_extra_bm25": 300,
+    "provided_text_plus_kg_paths": 300,
+    "provided_text_plus_kg_plus_extra_bm25": 300
+  },
+  "raw_api_responses_included": false,
+  "release_date": "2026-07-24"
+}

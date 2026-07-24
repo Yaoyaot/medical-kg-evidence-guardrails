@@ -1,0 +1,5 @@
+method,reference,budget,metric,mean_difference,ci_low,ci_high,iterations,resampling_unit
+full_without_dataset_source,self_reported_confidence,0.05,error_detection_recall,0.012415042902100108,-0.18750000000000003,0.19047619047619052,5000,claim_source_component
+full_without_dataset_source,self_reported_confidence,0.05,error_detection_precision,0.016571327454133894,-0.25925925925925924,0.2571428571428571,5000,claim_source_component
+full_without_dataset_source,self_reported_confidence,0.05,selective_risk,-0.001008722119910994,-0.014285714285714346,0.01412429378531077,5000,claim_source_component
+full_without_dataset_source,self_reported_confidence,0.05,accepted_false_support_rate,-0.0026185011237732946,-0.0784313725490196,0.09999999999999998,5000,claim_source_component
