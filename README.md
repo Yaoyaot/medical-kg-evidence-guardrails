@@ -14,7 +14,7 @@ The repository contains:
 - prompt templates and request-hash manifests;
 - machine-readable result tables and provenance;
 - a no-network synthetic smoke test;
-- one-command quick and frozen-result verification.
+- one-command quick, frozen-result, and paper-artifact verification.
 
 It excludes API credentials, UMLS licensed content, large knowledge graphs,
 third-party paired source text, raw API response archives, manuscripts,
@@ -31,6 +31,7 @@ examples/minimal/          No-network synthetic smoke test
 scripts/                   Core experiment and validation programs
 reproduce_quick.py         Dependency-light repository verification
 reproduce_frozen_results.py Recompute primary point estimates
+reproduce_paper_artifacts.py Rebuild manuscript tables and data-derived figures
 reproduce_full_pipeline.py  Preflight externally resourced reconstruction
 ```
 
@@ -86,6 +87,24 @@ The command recomputes:
 It checks the recomputed values against `artifacts/results/` and writes only
 ignored outputs under `outputs/reproduced/`. It does not call an API.
 
+## Manuscript table and figure reconstruction
+
+```bash
+python reproduce_paper_artifacts.py
+```
+
+This no-network command:
+
+- reruns frozen point-estimate verification;
+- rebuilds manuscript Tables 1–7 and Supplementary Tables S1–S6;
+- rebuilds data-derived Figures 3–7 as PNG (1200 dpi), SVG, and PDF;
+- checks manuscript-facing invariants, including the Formal600 evidence funnel,
+  PubMedQA frozen-risk transfer values, 5% routing counts, and audit totals.
+
+Figures 1 and 2 are conceptual system diagrams and are not derived from result
+tables. Generated files are written under the ignored
+`outputs/reproduced/` directory and are not versioned.
+
 ## Full reconstruction
 
 Full reconstruction requires upstream datasets, Hetionet, PrimeKG, Mondo,
@@ -132,8 +151,10 @@ hashes in the split files.
 ### Predictions and risk scores
 
 `artifacts/predictions/` contains parsed labels, confidence, error status,
-prompt-hash availability, and risk scores. Raw response text and model
-reasoning are not included.
+prompt-hash availability, and risk scores. The compact PubMedQA frozen-risk
+export contains only IDs, labels, audit state, and risk fields required for
+Figure 6 and Supplementary Table S1. Claim text, source text, raw response text,
+and model reasoning are not included.
 
 ### Human audits
 

@@ -1,0 +1,33 @@
+{
+  "release_date": "2026-07-24",
+  "purpose": "Complete reconstruction of manuscript data-derived figures and supplementary sensitivity tables.",
+  "network_or_api_calls": false,
+  "external_gold_used_for_risk_scoring": false,
+  "privacy": {
+    "claim_text_in_external_risk_export": false,
+    "source_text_in_external_risk_export": false,
+    "question_text_in_external_risk_export": false,
+    "model_reasoning_in_external_risk_export": false,
+    "raw_api_response_in_external_risk_export": false
+  },
+  "files": [
+    {
+      "path": "artifacts/predictions/pubmedqa_frozen_risk_scores.csv",
+      "bytes": 43065,
+      "rows": 300,
+      "sha256": "d92a3e43936e08e315587b42a3c6b7ffe3cf3b4932c896559ffe20455fa83958"
+    },
+    {
+      "path": "artifacts/results/pubmedqa_frozen_risk_ranking.csv",
+      "bytes": 610,
+      "rows": 3,
+      "sha256": "e6699a31ebf493163cb71042a806dd3f66256bf7991bdf68b2540f2e107bfe2e"
+    },
+    {
+      "path": "artifacts/results/pubmedqa_frozen_selective_metrics.csv",
+      "bytes": 951,
+      "rows": 3,
+      "sha256": "897616c7d005043291a00cf11c967a22e0208b7cc16999ecb5dd2cd7a8a0e6ee"
+    }
+  ]
+}
